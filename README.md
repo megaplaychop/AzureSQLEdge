@@ -47,34 +47,45 @@ Officially, HEC does not support these Macs because the Windows image we provide
       * `cd Downloads`
       * `sudo docker cp AdventureWorks2019.bak azuresqledge:/var/opt/mssql/data`
 3. Open Azure Data Studio to restore the database:
-      * Create a connection to your Docker container:
+      * Create a connection to your Docker container:  
 ![Azure Data Studio Setup](ADStudio_1.png)
+
       * This will open a screen to create a new connection to your Docker container:
 ![Azure Data Studio Setup](ADStudio_2.png)
-      * Enter connection info as shown (remember the password is `yourStrong(!)Password` (you can copy/paste this into the password text field):
-![Azure Data Studio Setup](ADStudio_3.png)      
-      * In the bottom left side of the main screen, click on the settings icon, then on settings in the menu:
-![Azure Data Studio Setup](ADStudio_4.png)      
+
+      * Enter connection info as shown (remember the password is `yourStrong(!)Password` (you can copy/paste this into the password text field) and click `Connect`:
+![Azure Data Studio Setup](ADStudio_3.png)  
+
+      * In the bottom left side of the main screen, click on the settings icon, then on `Settings` in the menu:
+![Azure Data Studio Setup](ADStudio_4.png)  
+
       * In the settings screen, type `enable preview features` in the search field.
-      * Check the Workbench: `Enable Preview Features item`.
+      * Check the Workbench: `Enable Preview Features item`:
 ![Azure Data Studio Setup](ADStudio_5.png)
+
       * Go back in the `localhost` tab on the top of the screen (you may close the `Settings` tab if you want) and restore the database by right-clicking anywhere in the list of databases on your server:
 ![Azure Data Studio Setup](ADStudio_6.png)
+
       * In the restore screen, select Restore from `Backup file` rather than `Database`
       * Then click on the `...` in the `Backup file path` field:
 ![Azure Data Studio Setup](ADStudio_7.png)
+
       * In the window, you have to find the AdventureWorks2019.bak file in your container (NOT in Mac OS, remember we copied that earlier!).
       * Locate the `var` folder, under it, locate `opt`, under that `mssql`, then under that, `data`, then file the `bak` file.
-      * Then click OK
+      * Then click `OK`:
 ![Azure Data Studio Setup](ADStudio_8.png)
+
       * You will go back into the database restore screen, but it will have information filled in for you, including the database name.
-      * Click on the `Restore` button:
+      * Click on the `Restore` button: 
 ![Azure Data Studio Setup](ADStudio_9.png)
+
       * The restore should complete quickly, as shown at the bottom of the screen:
 ![Azure Data Studio Setup](ADStudio_Restorecomplete.png)
-      * Once the restore is complete hit the `Refresh` button in the `localhost` tab:
+
+      * Once the restore is complete hit the `Refresh` button in the `localhost` tab:      
 ![Azure Data Studio Setup](ADStudio_10.png)
-      * Double-click on the AdventureWorks2019 database to view its tables:
+
+      * Double-click on the AdventureWorks2019 database to view its tables and if you want, open a new query by clicking `New Query`:    
 ![Azure Data Studio Setup](ADStudio_11.png)
 
 ### Modify the database to remove CRL columns in tables ###
