@@ -90,8 +90,16 @@ Officially, HEC does not support these Macs because the Windows image we provide
 
 ### Modify the database to remove CRL columns in tables ###
 1. Right now, executing any query against a table that contains a CRL data type returns an error:
-2. Execute the following commands to remove problematic columns
+2. Execute the following commands to remove problematic columns:
     * **This means that you can only do this if you know that you will not need to use these columns!**
+    * `ALTER TABLE Person.Address DROP COLUMN SpatialLocation;`
+    * `DROP INDEX HumanResources.Employee.IX_Employee_OrganizationLevel_OrganizationNode;`
+    * `ALTER TABLE HumanResources.Employee DROP COLUMN OrganizationLevel;`
+    * `DROP INDEX HumanResources.Employee.IX_Employee_OrganizationNode;`
+    * `ALTER TABLE HumanResources.Employee DROP COLUMN OrganizationNode;`
+    * `ALTER TABLE Production.ProductDocument DROP CONSTRAINT FK_ProductDocument_Document_DocumentNode;`
+    * `ALTER TABLE Production.ProductDocument DROP CONSTRAINT PK_ProductDocument_ProductID_DocumentNode;`
+    * `ALTER TABLE Production.ProductDocument DROP COLUMN DocumentNode;`
 
 ### Verify that everything works ###
 1. Execute the following query: `SELECT * FROM AdventureWorks2019.HumanResources.Employee;`.
