@@ -35,7 +35,7 @@ Officially, HEC does not support these Macs because the Windows image we provide
       * `sudo docker run -e ACCEPT_EULA=Y -e MSSQL_SA_PASSWORD=yourStrong(!)Password -p 1433:1433 --name azuresqledge -d mcr.microsoft.com/azure-sql-edge:latest`
       * As you can see, this means that the admin (sa) password for the server will be `yourStrong(!)Password`. You can change it if you want but this means that you will need to use the right password in Azure Data Studio to connect to it.
 3. In the future, you can start and stop the container with the click of a button directly from Docker Desktop:
-
+![Azure SQL Edge Container](DockerContainer.png)
 
 ### Download the AdventureWorks2019 backup file ###
 1. Download the [AdventureWorks2019 backup file](https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks/AdventureWorks2019.bak).
