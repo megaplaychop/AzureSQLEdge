@@ -29,7 +29,7 @@ Officially, HEC does not support these Macs because the Windows image we provide
     * Go to the [Azure Data Studio Download page for Mac OS](https://docs.microsoft.com/en-us/sql/azure-data-studio/download-azure-data-studio?view=sql-server-ver16#macos-installation)
     * Follow installation instructions.
   
-### Start your Azure SQL Edge image and connect to it via Azure Data Studio ###
+### Start your Azure SQL Edge container and connect to it via Azure Data Studio ###
 1. Open a terminal
 2. Execute the following command (you can copy and paste :
       * `sudo docker run -e ACCEPT_EULA=Y -e MSSQL_SA_PASSWORD=yourStrong(!)Password -p 1433:1433 --name azuresqledge -d mcr.microsoft.com/azure-sql-edge:latest`
@@ -47,8 +47,8 @@ Officially, HEC does not support these Macs because the Windows image we provide
       * `cd Downloads`
       * `sudo docker cp AdventureWorks2019.bak azuresqledge:/var/opt/mssql/data`
 3. Open Azure Data Studio to restore the database:
-      * Connect to the Azure SQL Edge instance by selecting the connection we created previously.
-      * 
+      * Create a connection to your Docker container:
+
 
 ### Modify the database to remove CRL columns in tables ###
 1. Right now, executing any query against a table that contains a CRL data type returns an error:
