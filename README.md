@@ -3,9 +3,15 @@ Azure SQL Edge install/config information
 
 **Rationale**
 Microsoft SQL Server (Express, Developer etc.) is only available for Intel CPUs. It works on x64 Mac and PCs but it does not work on the new M1/M2 Macs shipped by Apple. The workaround to allow students to use SQL Server is to make them install Azure SQL Edge instead. 
-Azure SQL Edge is an IoT, ARM compatible version of SQL Server. It offers most of what we need for TECH 60701, and arguable everything we need for our undergrad and certificate database courses. However, it does have limitations, the biggest one being that it does not support CRL data types (e.g., geography) and functions, or graph databases.
+Azure SQL Edge is an IoT, ARM compatible version of SQL Server. It offers most of what we need for TECH 60701, and arguable everything we need for our undergrad and certificate database courses. However, it does have limitations, the biggest one being that it does not support CRL data types (e.g., geography) and functions, or graph databases. The following procedure allows you to install and run a **modified version** AdventureWorks2019 on Azure SQL Edge.
 
-**It is the responsibility of the person teaching the course to verify that using Azure SQL Edge is ok for their course. This means testing queries, assignments, exams etc. prior to offering this as a workaround for students.**
+**It is the responsibility of the person teaching the course to verify that using Azure SQL Edge is ok for their course. This means testing queries, assignments, exams etc. prior to offering this as a workaround for students. Note that even with this limitation you still cannot run any query that involves the table `Production.Document`.**
+
+The following changes are performed at the end of the setup to drop CLR columns in AdventureWorks2019:
+* Drop `Person.Address.SpatialLocation`
+* Drop `Production.ProductDocument.DocumentNode` (and related indices)
+* Drop `HumanResources.Employee.OrganizationLevel` (and related indices - required to drop `HumanResources.Employee.OrganizationNode`)
+* Drop `HumanResources.Employee.OrganizationNode` (and related indices)
 
 Officially, HEC does not support these Macs because the Windows image we provide is made for Intel CPUs only (see Prerequis section on the [DTI website](https://hecmontreal.atlassian.net/wiki/spaces/DTIKB/pages/1944355282/Bac-Pack+HEC+-+Installation+et+configuration+Windows+sur+Mac+OS)). Note that there is currently no official statement from Microsoft about releasing an ARM compatible version of MSSQL.
 
