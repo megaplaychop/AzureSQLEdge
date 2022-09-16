@@ -19,8 +19,10 @@ Officially, HEC does not support these Macs because the Windows image we provide
 2.  Start Docker desktop from your launcher.
 3.  Pull the Azure SQL Edge image from the Docker repository:
     * Open a Terminal
-    * In the terminal, type `docker pull mcr.microsoft.com/azure-sql-edge:latest`
-4. Once the image is installed, you should be able to see it in your Docker desktop interface, as shown below.
+    * In the terminal, type `sudo docker pull mcr.microsoft.com/azure-sql-edge:latest`
+4. Once the image is installed, you should be able to see it in your Docker desktop interface, as shown below:
+
+
 
 ### Install Azure Data Studio ###
 1. Install **Azure Data Studio**. Azure Data Studio is a substitute for SQL Server Management Studio, the client application we use to type in queries etc. SQL Server Management Studio is not available on Mac OS (on a Mac with an Intel CPU where you installed Windows via Parallel or the school's virtual box image, you can install it, but that is not the case here):
@@ -28,10 +30,23 @@ Officially, HEC does not support these Macs because the Windows image we provide
     * Follow installation instructions.
   
 ### Start your Azure SQL Edge image and connect to it via Azure Data Studio ###
+1. Open a terminal
+2. Execute the following command (you can copy and paste :
+      * `sudo docker run --cap-add SYS_PTRACE -e 'ACCEPT_EULA=1' -e 'MSSQL_SA_PASSWORD=yourStrong(!)Password' -p 1433:1433 --name azuresqledge -d mcr.microsoft.com/azure-sql-edge`
+      * As you can see, this means that the admin (sa) password for the server will be `yourStrong(!)Password`. You can change it if you want but this means that you will need to use the right password in Azure Data Studio to connect to it.
 
 ### Download the AdventureWorks2019 backup file ###
+1. Download the [AdventureWorks2019 backup file](https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks/AdventureWorks2019.bak).
+2. Take good note of the location of the .bak file you just saved. By default, it goes in your user profile `Downloads` folder. The rest of the tutorial assumes that is the case, adapt if needed.
 
 ### Restore the AdventureWorks2019 backup ###
+1. First thing we need to do is to copy the backup file from your Mac OS to the Docker container. That's because the Docker container is a different (virtual) machine running inside, but separately from, your Mac OS installation.
+2. Open a terminal and execute the following commands (one command per bullet point): 
+      * `cd Downloads`
+      * `sudo docker cp AdventureWorks2019.bak azuresqledge:/var/opt/mssql/data`
+3. Open Azure Data Studio to restore the database:
+      * Connect to the Azure SQL Edge instance by selecting the connection we created previously.
+      * 
 
 ### Modify the database to remove CRL columns in tables ###
 1. Right now, executing any query against a table that contains a CRL data type returns an error:
