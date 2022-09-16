@@ -92,6 +92,8 @@ Officially, HEC does not support these Macs because the Windows image we provide
 1. Right now, executing any query against a table that contains a CRL data type returns an error:
 2. Execute the following commands to remove problematic columns:
     * **This means that you can only do this if you know that you will not need to use these columns!**
+    * `USE AdventureWorks2019`
+    * `GO`
     * `ALTER TABLE Person.Address DROP COLUMN SpatialLocation;`
     * `DROP INDEX HumanResources.Employee.IX_Employee_OrganizationLevel_OrganizationNode;`
     * `ALTER TABLE HumanResources.Employee DROP COLUMN OrganizationLevel;`
