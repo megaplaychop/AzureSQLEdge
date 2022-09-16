@@ -48,7 +48,11 @@ Officially, HEC does not support these Macs because the Windows image we provide
       * `sudo docker cp AdventureWorks2019.bak azuresqledge:/var/opt/mssql/data`
 3. Open Azure Data Studio to restore the database:
       * Create a connection to your Docker container:
-
+![Azure Data Studio Setup](ADStudio_1.png)
+      * This will open a screen to create a new connection to your Docker container:
+![Azure Data Studio Setup](ADStudio_2.png)
+      * Enter connection info as shown (remember the password is `yourStrong(!)Password` (you can copy/paste this into the password text field):
+![Azure Data Studio Setup](ADStudio_3.png)      
 
 ### Modify the database to remove CRL columns in tables ###
 1. Right now, executing any query against a table that contains a CRL data type returns an error:
