@@ -13,7 +13,7 @@ The following changes are performed at the end of the setup to drop CLR columns 
 * Drop `HumanResources.Employee.OrganizationLevel` (and related indices - required to drop `HumanResources.Employee.OrganizationNode`)
 * Drop `HumanResources.Employee.OrganizationNode` (and related indices)
 
-Officially, HEC does not support these Macs because the Windows image we provide is made for Intel CPUs only (see Prerequis section on the [DTI website](https://hecmontreal.atlassian.net/wiki/spaces/DTIKB/pages/1944355282/Bac-Pack+HEC+-+Installation+et+configuration+Windows+sur+Mac+OS)). Note that there is currently no official statement from Microsoft about releasing an ARM compatible version of MSSQL.
+Officially, HEC does not support these Macs because the Windows image we provide is made for Intel CPUs only (see Prerequis section on the [DTI website](https://hecmontreal.atlassian.net/wiki/spaces/DTIKB/pages/1944355282/Bac-Pack+HEC+-+Installation+et+configuration+Windows+sur+Mac+OS)). Note that there is currently no official statement from Microsoft about releasing an ARM compatible version of MSSQL (as of Aug 4, 2023).
 
 ## How-to ##
 
